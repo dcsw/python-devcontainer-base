@@ -2,7 +2,10 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
 	"name": "Jupyter Anaconda",
-	"image": "mcr.microsoft.com/devcontainers/anaconda",
+	// "image": "mcr.microsoft.com/devcontainers/anaconda",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	"features": {
@@ -21,13 +24,14 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"ms-python.python",
 				"ms-toolsai.jupyter",
-				"ms-python.python"
+				"ms-toolsai.vscode-jupyter-powertoys"
 			]
 		}
 	},
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
 	// "postStartCommand": "jupyter notebook list | grep http | sed 's/'$(hostname)'/localhost/' | cut -d' ' -f1",
-	"postStartCommand": "nohup bash -c 'jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root &'"
+	// "postStartCommand": "nohup bash -c 'jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root &'"
 }
