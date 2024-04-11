@@ -1,2 +1,7 @@
 nohup.out
-data/
+data/bin
+data/include
+data/lib
+data/lib64
+data/share
+data/pyvenv.cfg
