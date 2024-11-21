@@ -12,14 +12,16 @@ RUN apt-get update && apt-get install -y \
 
 FROM base as base_GCC
 
-# Upgrade pip and install Python dependencies
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel ipykernel
+# # Upgrade pip and install Python dependencies
+# RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+# FROM base_GCC as base_GCC_deps
+
+# # Install the latest version of PyMC3 from GitHub
+# # RUN pip install --no-cache-dir git+https://github.com/pymc-devs/pymc3
+# RUN pip install --no-cache-dir numpy scipy matplotlib pandas pymc ipykernel
 FROM base_GCC as base_GCC_deps
-
-# Install the latest version of PyMC3 from GitHub
-# RUN pip install --no-cache-dir git+https://github.com/pymc-devs/pymc3
-RUN pip install --no-cache-dir numpy scipy matplotlib pandas pymc3
-
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 FROM base_GCC_deps as pymc3
 
