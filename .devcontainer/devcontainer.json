@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
-	"name": "Jupyter Anaconda",
+	"name": "python pymc3",
 	// "image": "mcr.microsoft.com/devcontainers/anaconda",
 	"build": {
 		"dockerfile": "Dockerfile"
@@ -27,11 +27,24 @@
 				"ms-python.python",
 				"ms-toolsai.jupyter",
 				"ms-toolsai.vscode-jupyter-powertoys"
-			]
+			],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": true,
+                "python.formatting.autopep8Path": "/usr/local/bin/autopep8",
+                "python.formatting.blackPath": "/usr/local/bin/black",
+                "python.formatting.yapfPath": "/usr/local/bin/yapf",
+                "python.linting.banditPath": "/usr/local/bin/bandit",
+                "python.linting.flake8Path": "/usr/local/bin/flake8",
+                "python.linting.mypyPath": "/usr/local/bin/mypy",
+                "python.linting.pycodestylePath": "/usr/local/bin/pycodestyle",
+                "python.linting.pydocstylePath": "/usr/local/bin/pydocstyle"
+            }
 		}
 	},
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
-	// "postStartCommand": "jupyter notebook list | grep http | sed 's/'$(hostname)'/localhost/' | cut -d' ' -f1",
+	// "postStartCommand": "jupyter notebook list | grep http | sed 's/'$(hostname)'/localhost/' | cut -d' ' -f1"
 	// "postStartCommand": "nohup bash -c 'jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root &'"
 }
